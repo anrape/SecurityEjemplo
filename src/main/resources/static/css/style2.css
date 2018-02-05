@@ -1,0 +1,49 @@
+#imagenModificar {
+	height: 330px;
+	width: 300px;
+}
+.basic-textarea textarea {
+    height: auto;
+}
+.rounded-corners textarea {
+    border-radius: 0.25rem;
+}
+.purple-border textarea {
+    border: 1px solid #ba68c8;
+}
+.green-border-focus .form-control:focus {
+    border: 1px solid #8bc34a;
+}
+
+#usuarioLogeado {
+	margin-right: 30%;
+	color: white;
+}
+
+#botonSesion{
+	color: white;
+}
+
+@media screen and (max-width: 925px) {
+  #imagenModificar {
+	height: 250px;
+	width: auto;
+}
+
+@media screen and (max-width: 750px) {
+  #imagenModificar {
+	height: 175px;
+	width: auto;
+}
+
+@media screen and (max-width: 575px) {
+	#imagenModificar {
+	height: 300px;
+	width: auto;
+	}
+	
+	body {
+  	text-align: center;
+  	}
+  
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Listado de productos</title>
+    <!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" media="all"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" />
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" media="all"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+	<!-- Material Design Bootstrap -->
+	<link rel="stylesheet" type="text/css" media="all"
+	href="../static/css/mdb.min.css" th:href="@{/css/mdb.min.css}" />
+	<!-- Your custom styles (optional) -->
+	<link rel="stylesheet" type="text/css" media="all"
+	href="../static/css/style3.css" th:href="@{/css/style3.css}" />
+</head>
+
+<body>
+
+    <!-- Start your project here-->
+
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark blue lighten-1">
+        <a class="navbar-brand" th:href="@{/CRUD/listarproductos}">BigFastShirt</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-5" 
+        aria-controls="navbarSupportedContent-5" aria-expanded="false" aria-label="Toggle navigation">
+        	<span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-5">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link waves-effect waves-light" th:href="@{/CRUD/listarproductos}">Listado de productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light" th:href="@{/CRUD/redireccionAnadir}">A&ntilde;adir producto</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+            	<li class="nav-item">
+                	<p id="usuarioLogeado" th:text="${username}"></p>
+                </li>
+                <li class="nav-item">
+                	<form id="botonSesion" th:action="@{/logout}" method="POST">
+                    	<button type="submit" style="background-color: red">Cerrar sesi&oacute;n</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br/>
+    <!--Fin nav--> 
+    <!--Filas-->
+	    <div class="row"  th:each="camiseta : ${camisetas}"><!-- colocar estructura repetitiva que recoja los datos :  th:each="person : ${people}" -->
+	     	<!--Imagen-->
+	        <div class="col-xs-12 col-sm-2 col-md-2">
+	            <center>
+	            	<!-- buscar como introducir imagenes en una bbdd o en un server ftp -->
+	                <img th:src="${camiseta.srcimagen}"/> 
+	            </center>
+	        </div> 
+	        <!--Descripción-->
+	        <div class="col-xs-12 col-sm-5 col-md-5">
+	            <p th:text="${camiseta.nombre}" id="Contenido"></p><!-- th:text="${camiseta.nombre}" -->
+	            <p th:text="${camiseta.descripcion}" id="ContenidoDesc"></p><!-- th:text="${camiseta.descripcion}" -->
+	        </div> 
+	        <!--Categoria y Precio-->
+	        <div class="col-xs-12 col-sm-3 col-md-3" id="category"> 
+	        	<p th:text="${camiseta.categoria}"></p><!-- th:text="${camiseta.categoria}" -->
+	            <strong th:text="${camiseta.precio}"></strong><!-- th:text="${camiseta.precio}" -->
+	        </div> 
+	        <!--Botones--> 
+	        <div class="col-xs-12 col-sm-2 col-md-2" style="text-align: center;">
+	            <a th:href="@{/CRUD/redireccionModificar?id=__${camiseta.id}__}"><button type="button" class="btn btn-info" id="Botones">Modificar</button></a>
+	            <a href="#" th:href="@{/CRUD/removecamiseta?id=__${camiseta.id}__}"><button type="button" class="btn btn-danger" id="Botones">Eliminar</button></a> <!-- encontrar objeto y eliminarlo -->
+	        </div>
+	    </div>
+    <!--Finish your project here-->
+
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../static/js/popper.min.js" th:src="@{/js/popper.min.js}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../static/js/mdb.min.js" th:src="@{/js/mdb.min.js}"></script>
+    
+</body>
+
+</html>

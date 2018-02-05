@@ -1,0 +1,53 @@
+/* Your custom styles */
+body { text-align: center; 
+    /* The image used */
+    background-image: url("https://media.istockphoto.com/photos/gray-background-picture-id509988674?k=6&m=509988674&s=612x612&w=0&h=0HlsKHve94UrF77RG0S9emfQZIHo3LuhiR8df5Sq6ck=");
+
+     background-position: center center;
+  
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+  
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+  
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+}
+     /* center all items within body, this property is inherited */
+body > * { text-align: left; }
+     /* left-align the CONTENTS all items within body, additionally
+        you can add this text-align: left property to all elements
+        manually */
+.iniciousuario {
+    position:fixed;
+    border-radius: 15px;
+    box-shadow: 6px 6px 6px gray;
+    top: 50%;
+    left: 50%;
+    width:30em;
+    height:19em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+ }
+
+     /* reduces the width of the form to only what is necessary */
+
+#usuarioLogeado {
+	margin-right: 30%;
+	color: white;
+	padding-top: 8%;
+}
+
+#botonSesion{
+	color: white;
+	padding-top: 9%;
+}

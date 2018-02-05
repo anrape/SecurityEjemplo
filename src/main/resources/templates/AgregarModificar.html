@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>Agregar Modificar</title>
+<!-- Font Awesome -->
+<link rel="stylesheet" type="text/css" media="all"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" />
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" type="text/css" media="all"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<!-- Material Design Bootstrap -->
+<link rel="stylesheet" type="text/css" media="all"
+	href="../static/css/mdb.min.css" th:href="@{/css/mdb.min.css}" />
+<!-- Your custom styles (optional) -->
+<link rel="stylesheet" type="text/css" media="all"
+	href="../static/css/style.css" th:href="@{/css/style2.css}" />
+
+</head>
+<body>
+
+	<nav class="mb-1 navbar navbar-expand-lg navbar-dark blue lighten-1">
+		<a class="navbar-brand" th:href="@{/CRUD/listarproductos}">BigFastShirt</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent-5"
+			aria-controls="navbarSupportedContent-5" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent-5">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a
+					class="nav-link waves-effect waves-light"
+					th:href="@{/CRUD/listarproductos}">Listado de productos</a></li>
+				<li class="nav-item active"><a
+					class="nav-link waves-effect waves-light"
+					th:href="@{/CRUD/redireccionAnadir}">A&ntilde;adir producto</a></li>
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+                	<p id="usuarioLogeado" th:text="${username}"></p>
+                </li>
+				<li class="nav-item">
+					<form id="botonSesion" th:action="@{/logout}" method="POST">
+                    	<button type="submit" style="background-color: red">Cerrar sesi&oacute;n</button>
+                    </form>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div id="myAlert" class="alert alert-success collapse">
+			<a id="linkClose" href="#" class="close">&times;</a> <strong>Correcto!</strong>
+			El producto fue agregado.
+		</div>
+	</div>
+	<form action="#" th:action="@{/CRUD/addupdate}"
+		th:object="${camiseta}" method="post">
+		<div class="row">
+			<div class="col-xs-0 col-sm-2 col-md-2">
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<br />
+				<div class="md-form">
+					<input type="text" id="form1" class="form-control"
+						th:field="*{nombre}" th:value="${nombre}"/> <label for="form1" class="">Nombre
+						del producto</label>
+				</div>
+				
+
+				<div class="md-form">
+					<input type="text" id="form1" class="form-control"
+						th:field="*{precio}" th:value="${precio}"/> <label for="form1" class="">Precio</label>
+				</div>
+				<div class="form-group basic-textarea rounded-corners purple-border">
+					<label for="exampleFormControlTextarea4" >Descripci&oacute;n</label>
+					<textarea class="form-control" id="exampleFormControlTextarea4"
+						rows="3" th:field="*{descripcion}" th:value="${descripcion}"></textarea>
+				</div>
+
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-4">
+
+				<br/><br/>
+
+				<div class="btn-group">
+					<button class="btn btn-secondary dropdown-toggle" type="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categor&iacute;as</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#" value="Popular"
+							onclick="asignarCategoria('Popular')">Popular</a> <a
+							class="dropdown-item" href="#" value="Anime"
+							onclick="asignarCategoria('Anime')">Anime</a> <a
+							class="dropdown-item" href="#"
+							onclick="asignarCategoria('Videojuegos')">Videojuegos</a> <a
+							class="dropdown-item" href="#" value="Frases"
+							onclick="asignarCategoria('Frases')">Frases</a>
+					</div>
+				</div>
+
+				<br /> <br />
+
+				<div>
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-info"><input type="text" id="respuesta" th:field="*{categoria}" th:value="${categoria}" readonly="true"/></li><!-- th:field="*{categoria}" -->
+					</ul>
+
+				</div>
+
+				<br />
+
+			</div>
+			
+			<div class="col-xs-0 col-sm-2 col-md-2">
+			</div>
+			<div class="col-xs-0 col-sm-5 col-md-5"></div>
+			<div class="col-xs-12 col-sm-2 col-md-2">
+				<button style="text-align: center;" type="submit" class="btn btn-success waves-light"
+					id="btnSubmit">A&ntilde;adir producto</button>
+			</div>
+			<div class="col-xs-0 col-sm-5 col-md-5"></div>
+		</div>
+
+	</form>
+
+	<!-- SCRIPTS -->
+
+	<!-- JQuery -->
+	<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js"
+		th:src="@{/js/jquery-3.2.1.min.js}"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="../static/js/popper.min.js"
+		th:src="@{/js/popper.min.js}"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="../static/js/bootstrap.min.js"
+		th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="../static/js/mdb.min.js"
+		th:src="@{/js/mdb.min.js}"></script>
+	<script type="text/javascript" src="../static/js/categorias.js"
+		th:src="@{/js/categorias.js}"></script>
+
+</body>
+
+</html>

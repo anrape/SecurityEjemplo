@@ -1,0 +1,43 @@
+/* Your custom styles */
+/*iMAGEN CIRCULAR*/
+img {
+	background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+	padding: 10px 10px 10px 10px;
+	height: 125px;
+	width: auto;
+}
+
+#botones{
+	padding-top: 10px;
+}
+
+#Contenido{
+	font-size: 30px;
+	text-align: center;
+}
+
+#ContenidoDesc{
+	font-size: 25px;
+	text-align: center;
+}
+
+#category{
+	font-size: 30px;
+	text-align: center;
+}
+
+#Contenido > p{
+	margin: 0px;
+}
+
+#usuarioLogeado {
+	margin-right: 30%;
+	color: white;
+}
+
+#botonSesion{
+	color: white;
+}
